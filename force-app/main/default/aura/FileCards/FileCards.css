@@ -1,0 +1,8 @@
+.THIS .forceContentFileCard {
+        width: 100% !important;
+        height: 100%;
+        padding: 1px !important;
+        background-position: center;
+        background-size: cover;
+        border-radius: 5px;
+}

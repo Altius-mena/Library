@@ -1,0 +1,41 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-15-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   07-30-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <lightning-card class="fileTree">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text = "Loading" variant="brand"></lightning-spinner>
+        </template>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+                <c-workspace-form onsearch={fileSearch}></c-workspace-form>
+            </div>
+            <div class="slds-col">
+                <c-library-actions></c-library-actions>
+            </div>
+            <!--
+            <div class="slds-col">
+                <c-folder-search onsearch={folderSearch}></c-folder-search>
+            </div>
+            -->
+            
+        </div>
+        
+        
+       <!--Call WorkspaceForm component-->
+        <div class="slds-p-around_medium lgc-bg">
+            <!--Call code if empty workspace-->
+            <lightning-tree items={items} 
+                            onselect={handleOnselect}
+                            selected-item={selectedFolderId}>
+            </lightning-tree>
+        </div>
+    </lightning-card>
+</template>

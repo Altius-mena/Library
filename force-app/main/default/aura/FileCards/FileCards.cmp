@@ -1,0 +1,26 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-15-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   08-02-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" access="global">
+    <aura:attribute name="childAttr" type="Map" description="" access="public"/>
+        <lightning:layout multipleRows="true">
+        <aura:iteration items="{!v.childAttr}" var="file">
+            <lightning:layoutItem size="3" flexibility="grow" padding="around-small">
+                <lightning:fileCard fileId="{!file.ChildRecord.Id}" description="{!file.ChildRecordTitle}"/>
+            </lightning:layoutItem>
+        </aura:iteration>
+        <aura:if isTrue="{!v.childAttr.length eq 0}">
+             <lightning:layoutItem size="12" smallDeviceSize="12" mediumDeviceSize="12" largeDeviceSize="12" padding="around-small" class="slds-align_absolute-center">
+                <lightning:formattedText value="No file found" />
+            </lightning:layoutItem>
+        </aura:if>
+    </lightning:layout>
+    
+</aura:component>	

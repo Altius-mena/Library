@@ -1,0 +1,40 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-09-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   08-05-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <div class="slds-media slds-no-space slds-grow">
+        <div class="slds-media__body">  
+                <nav role="navigation">
+                    <ol class="slds-breadcrumb slds-list--horizontal slds-wrap">
+                        <li class="slds-breadcrumb__item slds-line-height--reset">
+                            <span class="slds-p-right--x-small uiOutputText">Files</span>
+                        </li>
+                        <li class="slds-breadcrumb__item slds-truncate slds-line-height--reset">
+                            <a class="test-fileshome-breadCrumbLink slds-truncate" title="Libraries"  href="javascript:void(0);">Libraries</a>  
+                        </li>
+                        <li class="slds-breadcrumb__item slds-truncate slds-line-height--reset">
+                            <a class="test-fileshome-breadCrumbLink slds-truncate" title={currentLibraryLabel}  href="javascript:void(0);">{currentLibraryLabel}</a>
+                        </li>
+                        <template for:each={path} for:item="p">
+                            <li class="slds-breadcrumb__item slds-truncate slds-line-height--reset" key={p.id} onclick={navigateTofolder}>
+                                <a class="test-fileshome-breadCrumbLink slds-truncate" title={currentLibraryLabel}  href="javascript:void(0);">{p.label}</a>
+                            </li>
+                        </template>
+                    </ol>
+                </nav>
+            <h1 class="slds-page-header__title slds-m-right--small slds-align-middle slds-truncate" title={currentFolder}>
+                <span class="test-fileshome-headerTitle uiOutputText">{currentFolder}</span>
+            </h1>
+                <div class="test-listViewStatusInfo" >
+                    <span class="countSortedByFilteredBy">{numberofItems} item(s)</span>
+                </div>
+        </div>
+    </div>
+</template>

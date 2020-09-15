@@ -1,0 +1,20 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-04-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   08-03-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <lightning-file-upload
+            label=""
+            name="fileUploader"
+            accept={acceptedFormats}
+            record-id={currentLibraryId}
+            onuploadfinished={handleUploadFinished}
+            multiple>
+    </lightning-file-upload>
+</template>

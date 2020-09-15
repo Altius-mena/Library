@@ -1,0 +1,111 @@
+<template>
+    <lightning-button-menu alternative-text="Show menu" tooltip="Library Actions"  menu-alignment="right" icon-name="utility:add" class="slds-p-top_x-large">
+        <lightning-menu-item value="New" label="New Library" onclick={openModalCreateLibrary}></lightning-menu-item>
+        <lightning-menu-item value="Edit" label="Edit Library Details" onclick={openModalEditLibrary}></lightning-menu-item>
+        <lightning-menu-item value="Delete" label="Delete Library" onclick={openModalDeleteLibrary}></lightning-menu-item>
+        <lightning-menu-item value="Manage" label="Manage Members"></lightning-menu-item>
+    </lightning-button-menu>
+    <!-- Create begin-->
+    <template if:true={isModalOpenCreateLibrary}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalCreateLibrary}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Library</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-input data-my-id="name" label="Name" required></lightning-input>
+                        <lightning-input data-my-id="description" label="Description"></lightning-input>
+                    </div>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModalCreateLibrary} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={newLibrary} title="Save">Save</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </template>
+    <!-- Create end-->
+    
+    <!-- Delete begin-->
+    <template if:true={isModalOpenDeleteLibrary}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalDeleteLibrary}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Delete Library?</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <p>Are you sure you want to delete ?</p>
+                    </div>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModalDeleteLibrary} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={deleteContentLibrary} title="Save">Delete</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </template>
+    <!-- Delete end-->
+    
+    <!-- Edit begin-->
+    <template if:true={isModalOpenEditLibrary}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalEditLibrary}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">Edit Library</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-input data-my-id="name" label="Name" required></lightning-input>
+                        <lightning-input data-my-id="description" label="Description"></lightning-input>
+                    </div>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModalEditLibrary} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={EditContentLibrary} title="Save">Save</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </template>
+    <!-- Edit end-->
+</template>

@@ -1,0 +1,125 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-09-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   09-07-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <!-- Neutral variant (default) -->
+    <!--<lightning-button-group>
+        <lightning-button label="New" icon-name="utility:open_folder" onclick={openModalCreateFolder}></lightning-button>
+        <lightning-button label="Move" icon-name="utility:replace" onclick={openModalMoveFolder}></lightning-button>
+        <lightning-button label="Delete" variant="destructive" icon-name="utility:delete" onclick={openModalDeleteFolder}></lightning-button>
+    </lightning-button-group>-->
+    <lightning-button-menu alternative-text="Show menu" tooltip="Folder Actions" icon-name="utility:settings" class="slds-p-top_medium slds-p-left_x-large">
+        <lightning-menu-item value="New" label="New" onclick={openModalCreateFolder} icon-name="utility:open_folder"></lightning-menu-item>
+        <lightning-menu-item value="Move" label="Move" onclick={openModalMoveFolder} icon-name="utility:replace"></lightning-menu-item>
+        <lightning-menu-item value="Delete" label="Delete" onclick={openModalDeleteFolder} icon-name="utility:delete" variant="destructive"></lightning-menu-item>
+    </lightning-button-menu>
+    <!--<lightning-button label="New Folder" title="New folder action" icon-name="utility:add" class="slds-m-left_x-small" onclick={openModal} ></lightning-button>-->
+    <!-- Create begin-->
+    <template if:true={isModalOpenCreateFolder}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalCreateFolder}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">New Folder</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <lightning-input data-my-id="name" label="Name" required></lightning-input>
+                    </div>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModalCreateFolder} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={newFolder} title="Save">Save</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </template>
+    <!-- Create end-->
+    
+    <!-- Delete begin-->
+    <template if:true={isModalOpenDeleteFolder}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalDeleteFolder}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-02" class="slds-text-heading_medium slds-hyphenate">Delete folder?</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-2">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <p>Are you sure you want to delete A-Tucson?</p>
+                    </div>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModalDeleteFolder} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={deleteContentFolder} title="Save">Delete</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </template>
+    <!-- Delete end-->
+    
+    <!-- Move begin-->
+    <template if:true={isModalOpenMoveFolder}>
+        <!-- Modal/Popup Box LWC starts here -->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box LWC header here -->
+                <header class="slds-modal__header">
+                    <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModalMoveFolder}>
+                        <lightning-icon icon-name="utility:close"
+                            alternative-text="close"
+                            variant="inverse"
+                            size="small" ></lightning-icon>
+                        <span class="slds-assistive-text">Close</span>
+                    </button>
+                    <h2 id="modal-heading-03" class="slds-text-heading_medium slds-hyphenate">Move Folder</h2>
+                </header>
+                <!-- Modal/Popup Box LWC body starts here -->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-3">
+                    <div class="slds-p-around_medium lgc-bg">
+                        <c-mini-file-tree></c-mini-file-tree>
+                    </div>
+                </div>
+                <!-- Modal/Popup Box LWC footer starts here -->
+                <footer class="slds-modal__footer">
+                    <button class="slds-button slds-button_neutral" onclick={closeModalMoveFolder} title="Cancel">Cancel</button>
+                    <button class="slds-button slds-button_brand" onclick={moveContentFolder} title="Save">Move Here</button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+        
+    </template>
+    <!-- Move end-->
+</template>

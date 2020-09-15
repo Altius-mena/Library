@@ -1,0 +1,22 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-16-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   08-03-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <div class="slds-p-around_medium lgc-bg">
+      <!--
+        <lightning-button-icon icon-name="utility:tile_card_list"    variant="inverse" alternative-text="gallery"  class="slds-m-left_xx-small gallery" title="tile_card_list" onclick={switchToGallery}></lightning-button-icon>
+        <lightning-button-icon icon-name="utility:rows"   variant="inverse" alternative-text="table" class="slds-m-left_xx-small table" title="rows" onclick={switchToTable}></lightning-button-icon>
+      --> 
+        <lightning-button-group>
+          <lightning-button-icon icon-name="utility:tile_card_list" variant="border-filled" alternative-text="gallery" onclick={switchToGallery} class="slds-m-left_xx-small gallery"></lightning-button-icon>
+          <lightning-button-icon icon-name="utility:rows" variant="border-filled" alternative-text="table" onclick={switchToTable} class="slds-m-left_xx-small table"></lightning-button-icon>
+      </lightning-button-group>
+      </div>
+</template>

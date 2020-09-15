@@ -1,0 +1,27 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 08-27-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   08-03-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<template>
+    <div style="height: 100%" class="cFileTable">
+            <lightning-datatable
+                key-field="Id"
+                columns={columns}
+                data={data}
+                hide-checkbox-column
+                default-sort-direction={defaultSortDirection}
+                sorted-direction={sortDirection}
+                sorted-by={sortBy}
+                onsort={handleSortdata}
+                class="slds-table_striped"
+                onrowaction={handleRowAction}>
+
+            </lightning-datatable>
+    </div>
+</template>

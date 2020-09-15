@@ -1,0 +1,40 @@
+<!--
+  @description       : 
+  @author            : ChangeMeIn@UserSettingsUnder.SFDoc
+  @group             : 
+  @last modified on  : 09-15-2020
+  @last modified by  : ChangeMeIn@UserSettingsUnder.SFDoc
+  Modifications Log 
+  Ver   Date         Author                               Modification
+  1.0   08-03-2020   ChangeMeIn@UserSettingsUnder.SFDoc   Initial Version
+-->
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable" controller="LibraryExplorer" access="global">
+
+<!--Data that is displayed on the screen (searche ...)-->
+<aura:attribute name="filesId" type="Map"/>
+<!--All data even if it is not displayed on the screen (not searche ...)-->
+<aura:attribute name="filesIdGlobal" type="Map"/>
+<!--Var to display data in Grid-->
+<aura:attribute name="isGallery" type="Boolean" default="true"/>
+<!--Var to display data in List-->
+<aura:attribute name="isTable" type="Boolean" default="false"/>
+<aura:attribute name="spinner" type="boolean" default="true"/>
+
+<lightning:messageChannel type="Record_Selected__c" onMessage="{!c.handleChanged}" scope="APPLICATION"/>
+<lightning:card>
+<aura:if isTrue="{!v.spinner}">
+    <lightning:spinner class="spins" size="large" variant="brand" alternativeText="Loading" />
+</aura:if>
+      <!--<aura:if isTrue="{!v.isGallery}">-->
+    <div class="{!v.isGallery? '': 'hideDiv'}">
+      <c:FileCards childAttr="{!v.filesId}"/>
+    </div>
+    <!--<aura:set attribute="else">-->
+    <div class="{!v.isTable? '': 'hideDiv'}">
+      <c:fileTable/>
+    </div>
+      
+    <!--</aura:set>
+  </aura:if>-->
+</lightning:card>
+</aura:component>
